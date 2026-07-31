@@ -122,7 +122,7 @@ namespace Assignment3_Byfielda
             , bool engOilChange, bool transOilChange, bool airFilterChange)
             : this()
         {
-            
+            IdentificationNumber = Count;
             FirstName = firstName;
             LastName = lastName;
             Phone = phone;

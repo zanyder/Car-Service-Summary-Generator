@@ -36,10 +36,11 @@ namespace Assignment3_Byfielda
             ValidateForm(txtFirstName.Text, txtLastName.Text, txtPhone.Text, cboMake.Text,
                 txtModel.Text, cboYear.Text, txtColour.Text)
               )
+            // If data is valid, create a new CarServiceSummary object and add it to the collection
             {
                 decimal costSum = 0;
                 if (chkAirFilter.Checked) { costSum += AIR_FILER_CHANGE_COST; }
-                if (chkOilChange.Checked) { costSum += ENGINE_OIL_CHANGE_PRICE;}
+                if (chkOilChange.Checked) { costSum += ENGINE_OIL_CHANGE_PRICE; }
                 if (chkTransmissionOil.Checked) { costSum += TRANSMISSION_OIL_CHANGE_PRICE; }
 
                 txtCost.Text = costSum.ToString();
@@ -78,6 +79,7 @@ namespace Assignment3_Byfielda
                     // Add to a collection of Services with IdentificationNumber
                     // as the list key
                     carServiceSummaryList.Add(newSummary.ID, newSummary);
+                    
 
 
                 }
@@ -85,7 +87,13 @@ namespace Assignment3_Byfielda
                 ClearForm();
                 // update ListView
                 UpdateListView();
+                MessageBox.Show("Car Service Summary has been added/updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            } // If data is not valid, display error message
+            else
+            {
+                MessageBox.Show("Please fill in all fields.");
             }
+      
         }
 
         private bool ValidateForm(string firstName, string lastName,
@@ -143,17 +151,10 @@ namespace Assignment3_Byfielda
                 errorMessage = "The following fields are blank: " + string.Join(", ", emptyFields) + ". Please make sure values are entered for each field.";
             }
 
-
-            MessageBox.Show(errorMessage);
-
-            // last name
-            // phone number
-            //make
-            //model
-            //year
-            //colour
-            //Services Selected
-
+            if (!valid)
+            {
+                MessageBox.Show(errorMessage);
+            }
             return valid;
         }
         // Update ListView
@@ -196,9 +197,19 @@ namespace Assignment3_Byfielda
                 item.SubItems.Add(new ListViewItem.ListViewSubItem(item, string.Empty) { Tag = chk, Text = "Active" });
                 chk.Checked = kvp.Value.AirFilterChange;
                 item.SubItems.Add(new ListViewItem.ListViewSubItem(item, string.Empty) { Tag = chk, Text = "Active" });
+
+                listSummaryList.Items.Add(item);
             }
         }
 
+        private void UpdateCostBox()
+        {
+            decimal costSum = 0;
+            if (chkAirFilter.Checked) { costSum += AIR_FILER_CHANGE_COST; }
+            if (chkOilChange.Checked) { costSum += ENGINE_OIL_CHANGE_PRICE; }
+            if (chkTransmissionOil.Checked) { costSum += TRANSMISSION_OIL_CHANGE_PRICE; }
+            txtCost.Text = costSum.ToString();
+        }
         private void RemoveSelectedSummary()
         {
             // Check if something is selected in the listview
@@ -239,11 +250,6 @@ namespace Assignment3_Byfielda
 
         }
 
-        private void btnNew_Click(object sender, EventArgs e)
-        {
-            AddCarSummary();
-        }
-
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             AddCarSummary();
@@ -268,6 +274,21 @@ namespace Assignment3_Byfielda
         private void txtCost_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void chkOilChange_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateCostBox();
+        }
+
+        private void chkTransmissionOil_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateCostBox();
+        }
+
+        private void chkAirFilter_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateCostBox();
         }
     }
 }

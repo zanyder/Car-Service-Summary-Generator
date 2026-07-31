@@ -51,7 +51,6 @@
             this.lblCost = new System.Windows.Forms.Label();
             this.txtCost = new System.Windows.Forms.TextBox();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.btnNew = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
             this.btnRemoveAll = new System.Windows.Forms.Button();
@@ -265,6 +264,7 @@
             this.chkOilChange.TabIndex = 14;
             this.chkOilChange.Text = "Engine Oil Change";
             this.chkOilChange.UseVisualStyleBackColor = true;
+            this.chkOilChange.CheckedChanged += new System.EventHandler(this.chkOilChange_CheckedChanged);
             // 
             // chkTransmissionOil
             // 
@@ -275,6 +275,7 @@
             this.chkTransmissionOil.TabIndex = 15;
             this.chkTransmissionOil.Text = "Transmission Oil Change";
             this.chkTransmissionOil.UseVisualStyleBackColor = true;
+            this.chkTransmissionOil.CheckedChanged += new System.EventHandler(this.chkTransmissionOil_CheckedChanged);
             // 
             // chkAirFilter
             // 
@@ -285,6 +286,7 @@
             this.chkAirFilter.TabIndex = 16;
             this.chkAirFilter.Text = "Air Filter Change";
             this.chkAirFilter.UseVisualStyleBackColor = true;
+            this.chkAirFilter.CheckedChanged += new System.EventHandler(this.chkAirFilter_CheckedChanged);
             // 
             // lblCost
             // 
@@ -307,24 +309,13 @@
             // btnAdd
             // 
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnAdd.Location = new System.Drawing.Point(59, 465);
+            this.btnAdd.Location = new System.Drawing.Point(174, 465);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(108, 23);
             this.btnAdd.TabIndex = 19;
             this.btnAdd.Text = "&Add";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // btnNew
-            // 
-            this.btnNew.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnNew.Location = new System.Drawing.Point(183, 465);
-            this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(108, 23);
-            this.btnNew.TabIndex = 19;
-            this.btnNew.Text = "&New";
-            this.btnNew.UseVisualStyleBackColor = true;
-            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // btnUpdate
             // 
@@ -457,7 +448,6 @@
             this.Controls.Add(this.btnRemoveAll);
             this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.btnUpdate);
-            this.Controls.Add(this.btnNew);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.txtCost);
             this.Controls.Add(this.lblCost);
@@ -519,7 +509,6 @@
         private System.Windows.Forms.Label lblCost;
         private System.Windows.Forms.TextBox txtCost;
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button btnNew;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.Button btnRemoveAll;
