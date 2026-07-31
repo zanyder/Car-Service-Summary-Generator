@@ -45,17 +45,10 @@ Prerequisites: Windows, Visual Studio (2019/2022/2026) and .NET Framework 4.7.2 
 2. Fix any validation errors reported by the UI.
 3. Generate the service summary and choose to save or print.
 
-## Suggestions for Extension
-
-- Add persistent storage (SQLite or JSON) to manage multiple records.
-- Add PDF export for higher-quality printable summaries.
-- Refactor business logic into testable service classes and add unit tests.
 
 ## For Evaluators
 
 Check `Form1.cs` and any model/service classes to see concrete uses of OOP, validation logic, and separation of concerns. The project is intended to demonstrate a solid grasp of event-driven desktop application development and maintainable code organization.
 
-## License
 
-Add a license file or choose a license (e.g., MIT) if you want to publish or share this repository publicly.
 
